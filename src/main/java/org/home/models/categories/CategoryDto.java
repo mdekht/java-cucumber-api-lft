@@ -1,11 +1,13 @@
 package org.home.models.categories;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties
 public class CategoryDto {
 
     @JsonProperty(value = "image", access = JsonProperty.Access.READ_WRITE)
@@ -14,6 +16,10 @@ public class CategoryDto {
     private String name;
     @JsonProperty(value = "id", access = JsonProperty.Access.READ_WRITE)
     private int id;
+    @JsonProperty(value = "creationAt", access = JsonProperty.Access.READ_WRITE)
+    private String creationAt;
+    @JsonProperty(value = "updatedAt", access = JsonProperty.Access.READ_WRITE)
+    private String updatedAt;
 
     public String getImage() {
         return image;

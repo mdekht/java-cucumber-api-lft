@@ -1,5 +1,6 @@
 package org.home.models.products;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.home.models.categories.CategoryDto;
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties
 public class ProductDto {
 
     @JsonProperty(value = "images", access = JsonProperty.Access.READ_WRITE)
@@ -22,6 +24,10 @@ public class ProductDto {
     private String title;
     @JsonProperty(value = "category", access = JsonProperty.Access.READ_WRITE)
     private CategoryDto category;
+    @JsonProperty(value = "creationAt", access = JsonProperty.Access.READ_WRITE)
+    private String creationAt;
+    @JsonProperty(value = "updatedAt", access = JsonProperty.Access.READ_WRITE)
+    private String updatedAt;
 
     public List<String> getImages() {
         return images;

@@ -16,7 +16,7 @@ public class ProductService extends AbstractWebService {
     private static final Logger LOGGER = LogManager.getLogger();
     private static final String PRODUCTS_END = "/products";
     private static final String PRODUCTS_RESOURCE_END = "/products{id}";
-    private RequestSpecification specification = getDefaultSpecification();
+
 
     public ProductDto create(ProductDto userDto) {
         return create(userDto, HttpStatus.CREATED).extract().as(ProductDto.class);
@@ -40,8 +40,7 @@ public class ProductService extends AbstractWebService {
     public List<ProductDto> getWithPagination(int offset, int limit) {
         LOGGER.info("Get products with offset:{offset} and limit:{limit}");
         specification.param("offset", offset).and().param("limit", limit);
-        ValidatableResponse response = getAll(specification, HttpStatus.OK);
-        return List.of(response.extract().as(ProductDto[].class));
+        return List.of(getAll(specification, HttpStatus.OK).extract().as(ProductDto[].class));
     }
 
     public List<ProductDto> getAll() {

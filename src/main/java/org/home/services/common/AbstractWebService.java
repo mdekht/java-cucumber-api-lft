@@ -27,7 +27,6 @@ public abstract class AbstractWebService {
         specBuilder.addRequestSpecification(specification);
         return RestAssured.given()
                 .spec(specBuilder.build())
-                .contentType(ContentType.JSON)
                 .when()
                 .get(path)
                 .then();
@@ -38,7 +37,6 @@ public abstract class AbstractWebService {
         specBuilder.addRequestSpecification(specification);
         return RestAssured.given()
                 .spec(specBuilder.build())
-                .contentType(ContentType.JSON)
                 .when()
                 .get(path, pathParams)
                 .then();
