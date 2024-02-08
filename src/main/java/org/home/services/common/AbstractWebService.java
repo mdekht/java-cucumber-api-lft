@@ -40,7 +40,6 @@ public abstract class AbstractWebService {
                 .then();
     }
 
-
     public ValidatableResponse post(String path, Object bodyPayload, Object... pathParams) {
         RequestSpecBuilder specBuilder = new RequestSpecBuilder();
         specBuilder.addRequestSpecification(specification);

@@ -1,9 +1,10 @@
-package steps;
+package steps.product;
 
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.Given;
 import org.home.models.products.ProductDto;
 import org.home.services.products.ProductService;
+import steps.BaseSteps;
 
 import java.util.List;
 

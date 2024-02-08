@@ -12,12 +12,10 @@ import java.util.List;
 
 public class ProductService extends AbstractWebService {
 
-
     private static final Logger LOGGER = LogManager.getLogger();
     private static final String PRODUCTS_END = "/products";
     private static final String PRODUCTS_END_CREATE = "/products/";
     private static final String PRODUCTS_RESOURCE_END = "/products/{id}";
-
 
     public ProductDto create(ProductDto userDto) {
         return create(userDto, HttpStatus.CREATED).extract().as(ProductDto.class);
@@ -27,7 +25,6 @@ public class ProductService extends AbstractWebService {
         LOGGER.info("Create new User");
         return post(PRODUCTS_END_CREATE, userDto).statusCode(status.getCode());
     }
-
 
     public ProductDto getById(String id) {
         return getById(id, HttpStatus.OK).extract().as(ProductDto.class);
