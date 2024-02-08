@@ -4,17 +4,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ScenarioContext {
-    private Map<String, Object> scenarioContext;
+    private static final ScenarioContext INSTANCE = new ScenarioContext();
+    private final ThreadLocal<Map<String, Object>> testContexts = ThreadLocal.withInitial(HashMap::new);
 
-    public ScenarioContext() {
-        scenarioContext = new HashMap<>();
+    private ScenarioContext() {
+        // Private constructor
     }
 
-    public void setContext(String key, Object value) {
-        scenarioContext.put(key, value);
+    public static ScenarioContext getInstance() {
+        return INSTANCE;
     }
 
-    public Object getContext(String key) {
-        return scenarioContext.get(key);
+    public <T> T getContext(String name) {
+        return (T) testContexts.get().get(name);
+    }
+
+    public <T> T setContext(String name, T object) {
+        testContexts.get().put(name, object);
+        return object;
     }
 }
