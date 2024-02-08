@@ -11,8 +11,6 @@ import io.restassured.specification.RequestSpecification;
 import org.aeonbits.owner.ConfigFactory;
 import org.home.common.environment.PropertiesParser;
 
-import static io.restassured.RestAssured.given;
-
 public abstract class AbstractWebService {
 
     protected RequestSpecification specification;
@@ -53,19 +51,6 @@ public abstract class AbstractWebService {
                 .spec(specBuilder.build())
                 .when()
                 .post(path, pathParams)
-                .then();
-    }
-
-    public ValidatableResponse put(String path, Object bodyPayload, Object... pathParams) {
-        RequestSpecBuilder specBuilder = new RequestSpecBuilder();
-        specBuilder.addRequestSpecification(specification);
-        if (bodyPayload != null) {
-            specBuilder.setBody(bodyPayload);
-        }
-        return given()
-                .spec(specBuilder.build())
-                .when()
-                .put(path, pathParams)
                 .then();
     }
 

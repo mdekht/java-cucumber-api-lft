@@ -5,8 +5,11 @@ import context.ScenarioContext;
 public class BaseSteps {
     protected ScenarioContext context;
 
-    protected ScenarioContext getContext() {
+    public BaseSteps() {
         context = new ScenarioContext();
+    }
+
+    protected ScenarioContext context() {
         return context;
     }
 }

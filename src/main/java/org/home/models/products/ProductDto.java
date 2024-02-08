@@ -28,9 +28,20 @@ public class ProductDto {
     private String creationAt;
     @JsonProperty(value = "updatedAt", access = JsonProperty.Access.READ_WRITE)
     private String updatedAt;
+    @JsonProperty(value = "categoryId", access = JsonProperty.Access.READ_WRITE)
+    private int categoryId;
 
     public List<String> getImages() {
         return images;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public ProductDto setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+        return this;
     }
 
     public int getPrice() {

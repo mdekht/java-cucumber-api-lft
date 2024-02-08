@@ -15,7 +15,8 @@ public class ProductService extends AbstractWebService {
 
     private static final Logger LOGGER = LogManager.getLogger();
     private static final String PRODUCTS_END = "/products";
-    private static final String PRODUCTS_RESOURCE_END = "/products{id}";
+    private static final String PRODUCTS_END_CREATE = "/products/";
+    private static final String PRODUCTS_RESOURCE_END = "/products/{id}";
 
 
     public ProductDto create(ProductDto userDto) {
@@ -24,7 +25,7 @@ public class ProductService extends AbstractWebService {
 
     public ValidatableResponse create(ProductDto userDto, HttpStatus status) {
         LOGGER.info("Create new User");
-        return post(PRODUCTS_END, userDto).statusCode(status.getCode());
+        return post(PRODUCTS_END_CREATE, userDto).statusCode(status.getCode());
     }
 
 
@@ -40,6 +41,12 @@ public class ProductService extends AbstractWebService {
     public List<ProductDto> getWithPagination(int offset, int limit) {
         LOGGER.info("Get products with offset:{offset} and limit:{limit}");
         specification.param("offset", offset).and().param("limit", limit);
+        return List.of(getAll(specification, HttpStatus.OK).extract().as(ProductDto[].class));
+    }
+
+    public List<ProductDto> getWithPriceRange(int minPrice, int maxPrice) {
+        LOGGER.info("Get products with min price:{minPrice} and max price:{maxPrice}");
+        specification.param("price_min", minPrice).and().param("price_max", maxPrice);
         return List.of(getAll(specification, HttpStatus.OK).extract().as(ProductDto[].class));
     }
 

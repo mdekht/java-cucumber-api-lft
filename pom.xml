@@ -72,6 +72,13 @@
             <version>${org.aeonbits.owner.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${faker.version}</version>
+        </dependency>
+
+
     </dependencies>
 
     <properties>
@@ -85,6 +92,7 @@
         <cucumber.version>7.15.0</cucumber.version>
         <junit.version>5.10.2</junit.version>
         <org.aeonbits.owner.version>1.0.12</org.aeonbits.owner.version>
+        <faker.version>1.0.2</faker.version>
     </properties>
 
 </project>
